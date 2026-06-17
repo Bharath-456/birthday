@@ -134,7 +134,7 @@ function initSimulationEngine() {
     }
 
     // --- STEP 6: TYPEWRITER REVEAL ---
-    const textDataContent = "Dear Sowjanya(BUDAMKAY),\n\nHappy Birthday to someone truly special! 🎂\nYou are Sweet, Loyal, My rock, and I'm so grateful to have you in my life.\nYou bring so much warmth and sweetness into my life. Every moment with you is precious.\n\nOn your special day, I wish you all the happiness, love, and joy that you deserve. May this year bring you countless beautiful moments and wonderful memories.\n\nHere's to celebrating you today and always! ✨\n\nWith love and best wishes,\nYour Special Someone 💖";
+    const textDataContent = "Dear BUDAMKAY,\n\nHappy Birthday to someone truly special! 🎂\nYou are Sweet, Loyal, My rock, and I'm so grateful to have you in my life.\nYou bring so much warmth and sweetness into my life. Every moment with you is precious.\n\nOn your special day, I wish you all the happiness, love, and joy that you deserve. May this year bring you countless beautiful moments and wonderful memories.\n\nHere's to celebrating you today and always! ✨\n\nWith love and best wishes,\nYour Special Someone 💖";
 
     envelopeWrapper.addEventListener('click', () => {
         envelopeWrapper.classList.add('opened');
