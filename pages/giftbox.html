@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Box</title>
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        .t-call { font-size: 0.85rem; font-weight: 600; }
+        .sub-call { font-size: 0.65rem; opacity: 0.7; margin-bottom: 15px; }
+        .box { width: 60px; height: 55px; background: #ff6b8b; position: relative; border-radius: 4px; cursor: pointer; }
+        .lid { width: 66px; height: 12px; background: #ff4772; position: absolute; top: -10px; left: -3px; border-radius: 2px; }
+        .rib-v { width: 10px; height: 100%; background: #fff014; position: absolute; left: 50%; transform: translateX(-50%); }
+        .rib-h { height: 10px; width: 100%; background: #fff014; position: absolute; top: 50%; transform: translateY(-50%); }
+        .bow { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 14px; }
+        .unveiled { display: none; width: 100%; flex-direction: column; align-items: center; }
+        .polaroid { background: white; padding: 10px; padding-bottom: 14px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); border-radius: 4px; width: 85%; transform: rotate(-2deg); color: #222; }
+        .p-head { font-size: 0.8rem; font-weight: 700; text-align: center; color: #ff4772; margin-bottom: 8px; letter-spacing: 1px; }
+        .p-foot { text-align: center; border-top: 1px dashed #eee; padding-top: 8px; margin-top: 8px; }
+        .f1 { font-size: 0.62rem; font-weight: 600; color: #555; }
+        .f2 { font-size: 0.55rem; color: #888; margin-top: 2px; }
+    </style>
+</head>
+<body>
+    <div class="shared-card">
+        <div id="idle-view">
+            <p class="t-call">One Last Thing...</p>
+            <p class="sub-call">Tap the gift</p>
+
+            <div class="box">
+                <div class="lid"></div>
+                <div class="rib-v"></div>
+                <div class="rib-h"></div>
+                <div class="bow">🎀</div>
+            </div>
+        </div>
+
+        <div class="unveiled" id="open-view">
+            <div class="polaroid">
+                <div class="p-head">MBD</div>
+                <div style="text-align: center; font-size: 1.2rem; margin-bottom: 6px;">🐻 ❤️ 🐰</div>
+                <div class="p-foot">
+                    <p class="f1">Lots of love for you</p>
+                    <p class="f2">Once again, Happy Birthday Sowjanya(KANMANI)!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script>
+        document.querySelector('.box').addEventListener('click', () => {
+            document.getElementById('idle-view').style.display = 'none';
+            document.getElementById('open-view').style.display = 'flex';
+        });
+    </script>
+</body>
+</html>

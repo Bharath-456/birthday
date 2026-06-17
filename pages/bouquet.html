@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouquet</title>
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        .header { font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; opacity: 0.8; }
+        .centerpiece { position: relative; width: 100%; height: 220px; display: flex; justify-content: center; align-items: center; }
+        .bouquet { font-size: 3.5rem; z-index: 2; }
+        .cloud-pill { position: absolute; background: rgba(255, 255, 255, 0.85); color: #444; padding: 4px 8px; border-radius: 12px; font-size: 0.52rem; font-weight: 500; white-space: nowrap; animation: floatNode 2.5s ease-in-out infinite alternate; }
+        body[data-theme="classic"] .cloud-pill { background: rgba(20, 10, 35, 0.8); color: #dfd5ed; border: 1px solid rgba(142,30,255,0.2); }
+        .p1 { top: 10%; left: 0%; animation-delay: 0s; }
+        .p2 { top: 5%; right: 0%; animation-delay: 0.4s; }
+        .p3 { top: 45%; left: -5%; animation-delay: 0.8s; }
+        .p4 { top: 40%; right: -5%; animation-delay: 0.2s; }
+        .p5 { bottom: 15%; left: 0%; animation-delay: 0.6s; }
+        .p6 { bottom: 8%; right: 0%; animation-delay: 1s; }
+        @keyframes floatNode { from { transform: translateY(0); } to { transform: translateY(-4px); } }
+    </style>
+</head>
+<body>
+    <div class="shared-card">
+        <h2 class="header">Your Rose Bouquet</h2>
+
+        <div class="centerpiece">
+            <div class="bouquet">💐</div>
+
+            <div class="cloud-pill p1">Forever yours</div>
+            <div class="cloud-pill p2">You make my world beautiful</div>
+            <div class="cloud-pill p3">You are my sunshine ❤️</div>
+            <div class="cloud-pill p4">Happy Birthday Sowjanya(KANMANI)</div>
+            <div class="cloud-pill p5">I'm lucky to have you</div>
+            <div class="cloud-pill p6">My favorite person 🧸</div>
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script>
+        setTimeout(() => { transitionToPage('letter.html'); }, 4000);
+    </script>
+</body>
+</html>

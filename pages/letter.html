@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter</title>
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        .msg-title { font-size: 0.85rem; font-weight: 600; margin-bottom: 25px; }
+        .env-box { width: 100px; height: 65px; background: #fcd0dc; border-radius: 4px; position: relative; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        body[data-theme="classic"] .env-box { background: #3a1c5c; }
+        .flap { position: absolute; top: 0; left: 0; right: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-top: 35px solid #fcaec4; transform-origin: top; transition: transform 0.4s; z-index: 3; }
+        body[data-theme="classic"] .flap { border-top-color: #271042; }
+        .pouch { position: absolute; inset: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-bottom: 35px solid #f79cb5; border-radius: 0 0 4px 4px; z-index: 2; }
+        body[data-theme="classic"] .pouch { border-bottom-color: #1b0733; }
+        .seal { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); z-index: 4; font-size: 14px; }
+        .notice { font-size: 0.65rem; margin-top: 15px; opacity: 0.7; }
+        .env-box.opened .flap { transform: rotateX(180deg); z-index: 1; }
+        .paper { position: absolute; inset: 5px; background: #fff; border-radius: 16px; padding: 12px; display: none; flex-direction: column; z-index: 5; color: #333; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .sheet-head { display: flex; justify-content: space-between; font-size: 0.7rem; font-weight: 700; color: #c61a52; border-bottom: 1px solid #f0f0f0; padding-bottom: 4px; margin-bottom: 6px; }
+        .scroller { flex-grow: 1; overflow-y: auto; text-align: left; font-size: 0.62rem; line-height: 1.4; color: #555; white-space: pre-line; }
+    </style>
+</head>
+<body>
+    <div class="shared-card">
+        <h2 class="msg-title" id="t1">A Message From My Heart</h2>
+
+        <div class="env-box" id="env">
+            <div class="flap"></div>
+            <div class="pouch"></div>
+            <div class="seal">❤️</div>
+        </div>
+
+        <p class="notice" id="t2">Tap the envelope</p>
+
+        <div class="paper" id="paper">
+            <div class="sheet-head">
+                <span>Dear Sowjanya(KANMANI),</span>
+                <span>🧸</span>
+            </div>
+            <div class="scroller" id="content"></div>
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script>
+        const env = document.getElementById('env');
+        const txt = "Dear Sowjanya(KANMANI),\n\nHappy Birthday to someone truly special! 🎂\nYou are Sweet, Loyal, My rock, and I'm so grateful to have you in my life.\nYou bring so much warmth and sweetness into my life. Every moment with you is precious.\n\nOn your special day, I wish you all the happiness, love, and joy that you deserve. May this year bring you countless beautiful moments and wonderful memories.\n\nHere's to celebrating you today and always! ✨\n\nWith love and best wishes,\nYour Special Someone 💖";
+        
+        env.addEventListener('click', () => {
+            env.classList.add('opened');
+            setTimeout(() => {
+                document.getElementById('t1').style.display = 'none';
+                document.getElementById('t2').style.display = 'none';
+                env.style.display = 'none';
+                document.getElementById('paper').style.display = 'flex';
+                let i = 0;
+                function type() {
+                    if(i < txt.length) {
+                        document.getElementById('content').innerText += txt[i];
+                        i++;
+                        setTimeout(type, 30);
+                    } else {
+                        setTimeout(() => { transitionToPage('giftbox.html'); }, 3000);
+                    }
+                }
+                type();
+            }, 600);
+        });
+    </script>
+</body>
+</html>

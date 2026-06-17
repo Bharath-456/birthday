@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloons</title>
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        .header-stats { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
+        .goal { font-size: 0.85rem; font-weight: 600; }
+        .counter { font-size: 0.65rem; font-weight: 700; opacity: 0.7; letter-spacing: 0.5px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 15px; width: 100%; justify-items: center; }
+        .wrap { display: flex; flex-direction: column; align-items: center; cursor: pointer; }
+        .b-body { width: 44px; height: 54px; border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; position: relative; }
+        .b-body::after { content: ''; position: absolute; bottom: -3px; left: 50%; transform: translateX(-50%); border-left: 4px solid transparent; border-right: 4px solid transparent; }
+        .c-1 { background: #4fc3f7; } .c-1::after { border-bottom: 5px solid #4fc3f7; }
+        .c-2 { background: #ff8aab; } .c-2::after { border-bottom: 5px solid #ff8aab; }
+        .c-3 { background: #b2ff59; } .c-3::after { border-bottom: 5px solid #b2ff59; }
+        .c-4 { background: #cc99ff; } .c-4::after { border-bottom: 5px solid #cc99ff; }
+        .string { width: 1px; height: 20px; background: rgba(0,0,0,0.15); }
+        .output { height: 25px; margin-top: 20px; font-size: 0.9rem; font-weight: 700; color: #ff3370; }
+    </style>
+</head>
+<body>
+    <div class="shared-card">
+        <div class="header-stats">
+            <div class="goal">Pop all 4 balloons</div>
+            <div class="counter" id="lbl">0/4 POPPED</div>
+        </div>
+
+        <div class="grid">
+            <div class="wrap" data-txt="You">
+                <div class="b-body c-1"></div>
+                <div class="string"></div>
+            </div>
+
+            <div class="wrap" data-txt="are">
+                <div class="b-body c-2"></div>
+                <div class="string"></div>
+            </div>
+
+            <div class="wrap" data-txt="so">
+                <div class="b-body c-3"></div>
+                <div class="string"></div>
+            </div>
+
+            <div class="wrap" data-txt="special!">
+                <div class="b-body c-4"></div>
+                <div class="string"></div>
+            </div>
+        </div>
+
+        <div class="output" id="out"></div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script>
+        let popped = 0; let words = [];
+        document.querySelectorAll('.wrap').forEach(w => {
+            w.addEventListener('click', () => {
+                const b = w.querySelector('.b-body');
+                if(b.style.visibility === 'hidden') return;
+                b.style.visibility = 'hidden'; popped++;
+                words.push(w.getAttribute('data-txt'));
+                document.getElementById('lbl').innerText = `${popped}/4 POPPED`;
+                document.getElementById('out').innerText = words.join(' ');
+                if(popped === 4) { setTimeout(() => { transitionToPage('candle.html'); }, 1200); }
+            });
+        });
+    </script>
+</body>
+</html>

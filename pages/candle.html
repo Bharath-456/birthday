@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candle</title>
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        .headline { font-size: 0.95rem; font-weight: 600; margin-bottom: 30px; }
+        .cake-display { position: relative; margin-bottom: 30px; }
+        .avatar { font-size: 4rem; }
+        .wick { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); width: 12px; height: 20px; }
+        .flame { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 10px; height: 15px; background: #ffb300; border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%; box-shadow: 0 0 10px #ffb300; animation: flicker 0.15s infinite alternate; }
+        .core { position: absolute; top: 4px; left: 50%; transform: translateX(-50%); width: 4px; height: 8px; background: #fff; border-radius: 50%; }
+        @keyframes flicker { 0% { transform: translateX(-50%) scale(1); } 100% { transform: translateX(-50%) scale(1.1); } }
+        .pill { background: #ff3370; color: white; border: none; padding: 6px 16px; border-radius: 18px; font-size: 0.72rem; font-weight: 600; cursor: pointer; }
+        .status { font-size: 0.58rem; opacity: 0.6; margin-top: 8px; }
+    </style>
+</head>
+<body>
+    <div class="shared-card">
+        <h2 class="headline">Blow the candle</h2>
+        
+        <div class="cake-display" id="cake-container">
+            <div class="wick" id="fire">
+                <div class="flame"></div>
+                <div class="core"></div>
+            </div>
+
+            <div class="avatar">🎂</div>
+        </div>
+
+        <button class="pill" id="action">Blow into the mic</button>
+        <p class="status" id="status">Requires microphone sensory access</p>
+    </div>
+
+    <script src="shared.js"></script>
+    <script>
+        const act = document.getElementById('action');
+        const stat = document.getElementById('status');
+        const fire = document.getElementById('fire');
+
+        function extinguish() {
+            fire.style.display = 'none';
+            stat.innerText = "Close your eyes & make a wish";
+            setTimeout(() => { transitionToPage('bouquet.html'); }, 2000);
+        }
+
+        act.addEventListener('click', () => {
+            act.style.display = 'none';
+            stat.innerText = "Listening... Blow hard!";
+            if (navigator.mediaDevices?.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+                    const ctx = new AudioContext();
+                    const analyser = ctx.createAnalyser();
+                    const source = ctx.createMediaStreamSource(stream);
+                    analyser.fftSize = 256;
+                    const data = new Uint8Array(analyser.frequencyBinCount);
+                    source.connect(analyser);
+                    function check() {
+                        analyser.getByteFrequencyData(data);
+                        let sum = data.reduce((a, b) => a + b, 0);
+                        if ((sum / data.length) > 55) {
+                            stream.getTracks().forEach(t => t.stop()); ctx.close(); extinguish();
+                        } else { requestAnimationFrame(check); }
+                    }
+                    requestAnimationFrame(check);
+                }).catch(() => { setupFallback(); });
+            } else { setupFallback(); }
+        });
+
+        function setupFallback() {
+            stat.innerText = "Tap cake to blow out candle.";
+            document.getElementById('cake-container').style.cursor = 'pointer';
+            document.getElementById('cake-container').addEventListener('click', extinguish);
+        }
+    </script>
+</body>
+</html>

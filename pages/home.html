@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; margin-bottom: 15px; }
+        body[data-theme="classic"] .badge { background: rgba(142, 30, 255, 0.2); color: #e5d5ff; }
+        body[data-theme="cute"] .badge { background: #fff; color: #c61a52; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+        .qr-box { width: 130px; height: 120px; position: relative; display: flex; justify-content: center; align-items: center; margin-bottom: 15px; }
+        .vector-heart { position: absolute; inset: 0; width: 100%; height: 100%; }
+        body[data-theme="classic"] .vector-heart { fill: #5f10a3; }
+        body[data-theme="cute"] .vector-heart { fill: #ff3370; }
+        .qr-matrix { position: absolute; width: 52px; height: 52px; background: #ffffff; border-radius: 4px; padding: 3px; display: flex; flex-wrap: wrap; justify-content: space-between; align-content: space-between; }
+        .anchor { width: 13px; height: 13px; border: 2.5px solid #111; }
+        .dots { position: absolute; inset: 4px; background-image: radial-gradient(#111 2px, transparent 2px); background-size: 5px 5px; opacity: 0.8; z-index: 1; }
+        .center-heart { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 9px; background: white; z-index: 2; padding: 1px; border-radius: 50%; }
+        .caption { font-size: 0.72rem; font-weight: 500; animation: flash 1.5s ease-in-out infinite alternate; }
+        @keyframes flash { from { opacity: 0.4; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <div class="shared-card" id="clickable-card">
+        <div class="badge">❤️ Sowjanya(KANMANI)</div>
+        
+        <div class="qr-box">
+            <svg class="vector-heart" viewBox="0 0 32 29.6">
+                <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+            </svg>
+            <div class="qr-matrix">
+                <div class="anchor"></div>
+                <div class="anchor"></div>
+                <div class="anchor"></div>
+                <div class="anchor"></div>
+                <div class="dots"></div>
+                <div class="center-heart">💖</div>
+            </div>
+        </div>
+
+        <p class="caption">Tap to open</p>
+    </div>
+
+    <script src="shared.js"></script>
+    <script>
+        document.getElementById('clickable-card').addEventListener('click', () => {
+            document.querySelector('.caption').innerText = "Opening...";
+            setTimeout(() => { transitionToPage('greeting.html'); }, 800);
+        });
+    </script>
+</body>
+</html>

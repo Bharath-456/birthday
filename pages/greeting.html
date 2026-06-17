@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting</title>
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        .title { font-size: 0.95rem; font-weight: 700; line-height: 1.3; margin-bottom: 12px; }
+        .showcase { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 15px; }
+        .bears { display: flex; gap: 12px; }
+        .bear { width: 45px; height: 45px; border-radius: 50%; position: relative; }
+        .bear.brown { background: #b08367; }
+        .bear.white { background: #f5f5f5; border: 1px solid #ddd; }
+        .ear { width: 14px; height: 14px; border-radius: 50%; position: absolute; top: -3px; }
+        .bear.brown .ear { background: #b08367; }
+        .bear.white .ear { background: #f5f5f5; }
+        .ear.left { left: -2px; } .ear.right { right: -2px; }
+        .eye { width: 4px; height: 4px; background: #222; border-radius: 50%; position: absolute; top: 18px; }
+        .eye.l { left: 12px; } .eye.r { right: 12px; }
+        .snout { width: 10px; height: 7px; background: #fff; border-radius: 6px; position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); }
+        .cake { font-size: 2.5rem; }
+        .q-text { font-size: 0.72rem; font-weight: 500; margin-bottom: 12px; }
+        .arena { position: relative; width: 100%; height: 40px; display: flex; justify-content: center; gap: 14px; }
+        .btn { padding: 6px 18px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; border: none; cursor: pointer; height: 32px; }
+        .btn.yes { background: #ff3370; color: #fff; z-index: 2; }
+        .btn.no { background: rgba(0,0,0,0.06); color: inherit; position: absolute; z-index: 3; transition: all 0.1s ease; }
+        body[data-theme="classic"] .btn.no { background: rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body>
+    <div class="shared-card">
+        <h1 class="title">Happy Birthday,<br>Sowjanya(KANMANI)</h1>
+        
+        <div class="showcase">
+            <div class="bears">
+                <div class="bear brown">
+                    <div class="ear left"></div>
+                    <div class="ear right"></div>
+                    <div class="eye l"></div>
+                    <div class="eye r"></div>
+                    <div class="snout"></div>
+                </div>
+                <div class="bear white">
+                    <div class="ear left"></div>
+                    <div class="ear right"></div>
+                    <div class="eye l"></div>
+                    <div class="eye r"></div>
+                    <div class="snout"></div>
+                </div>
+            </div>
+
+            <div class="cake">🎂</div>
+
+            <div>✨ 🎉 ✨</div>
+        </div>
+
+        <p class="q-text">Are you excited for what's next?</p>
+
+        <div class="arena">
+            <button class="btn yes" id="yes">Yes</button>
+            <button class="btn no" id="no">No</button>
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script>
+        const no = document.getElementById('no');
+        function dodge() {
+            const x = (Math.random() * 120) - 60;
+            const y = (Math.random() * 40) - 20;
+            no.style.transform = `translate(${x}px, ${y}px)`;
+        }
+        no.addEventListener('mouseenter', dodge);
+        no.addEventListener('touchstart', (e) => { e.preventDefault(); dodge(); });
+        document.getElementById('yes').addEventListener('click', () => { transitionToPage('balloons.html'); });
+    </script>
+</body>
+</html>

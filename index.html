@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday KANMANI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="ambient-sky" id="space-backdrop"></div>
+
+    <main class="app-canvas">
+
+        <div class="sim-step active" id="step-cover">
+            <div class="glass-envelope-card">
+                <div class="user-badge">
+                    <span class="badge-accent">❤️</span>
+                    <span class="badge-recipient">Sowjanya(KANMANI)</span>
+                </div>
+                <div class="qr-heart-frame">
+                    <div class="heart-pulse-canvas">
+                        <svg class="vector-heart" viewBox="0 0 32 29.6">
+                            <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+                        </svg>
+                        <div class="qr-matrix-box">
+                            <div class="qr-anchor top-l"></div>
+                            <div class="qr-anchor top-r"></div>
+                            <div class="qr-anchor bot-l"></div>
+                            <div class="qr-core-heart">💖</div>
+                            <div class="qr-pattern-mesh"></div>
+                        </div>
+                    </div>
+                </div>
+                <p class="action-caption-hint" id="cover-action-text">Tap to open</p>
+            </div>
+        </div>
+
+        <div class="sim-step" id="step-greeting">
+            <div class="interactive-panel-layout">
+                <h2 class="greet-title">Happy Birthday,<br>Sowjanya(KANMANI)</h2>
+                
+                <div class="graphics-showcase">
+                    <img src="1000016159.jpg" alt="Happy Birthday Bears" class="content-image-media">
+                </div>
+
+                <div class="decision-prompt-block">
+                    <p class="question-text">Are you excited for what's next?</p>
+                    <div class="evasive-button-arena">
+                        <div class="buttons-row-lock">
+                            <button class="choice-btn target-yes" id="btn-gate-yes">Yes</button>
+                            <button class="choice-btn target-no" id="btn-gate-no">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sim-step" id="step-balloons">
+            <div class="balloon-game-container">
+                <div class="game-header-stats">
+                    <span class="pop-goal-text">Pop all 4 balloons</span>
+                    <span class="pop-score-counter" id="balloon-counter">0/4 POPPED</span>
+                </div>
+                <div class="balloon-quad-grid">
+                    <div class="balloon-item-wrap" data-fragment="You">
+                        <div class="balloon-body color-cyan"></div>
+                        <div class="balloon-string"></div>
+                    </div>
+                    <div class="balloon-item-wrap" data-fragment="are">
+                        <div class="balloon-body color-pink"></div>
+                        <div class="balloon-string"></div>
+                    </div>
+                    <div class="balloon-item-wrap" data-fragment="so">
+                        <div class="balloon-body color-lime"></div>
+                        <div class="balloon-string"></div>
+                    </div>
+                    <div class="balloon-item-wrap" data-fragment="special!">
+                        <div class="balloon-body color-purple"></div>
+                        <div class="balloon-string"></div>
+                    </div>
+                </div>
+                <div class="reveal-string-terminal" id="minigame-message-output"></div>
+            </div>
+        </div>
+
+        <div class="sim-step" id="step-candle">
+            <div class="candle-immersion-layout">
+                <h3 class="candle-headline">Blow the candle</h3>
+                <div class="altars-cake-display" id="cake-touch-bypass">
+                    <div class="candle-wick-assembly" id="candle-fire-group">
+                        <div class="plasma-flame"></div>
+                        <div class="plasma-flame-core"></div>
+                    </div>
+                    <div class="cake-avatar">🎂</div>
+                </div>
+                <div class="mic-trigger-deck">
+                    <button class="mic-activation-pill" id="action-mic-start">Blow into the mic</button>
+                    <p class="mic-disclaimer" id="mic-progress-status">Requires microphone sensory access</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sim-step" id="step-bouquet">
+            <div class="bouquet-ecology">
+                <p class="ecology-header">Your Rose Bouquet</p>
+                <div class="flora-centerpiece">
+                    <div class="bouquet-graphics">💐</div>
+                    <div class="orbiting-nodes-cloud">
+                        <div class="cloud-pill pos-t1">Forever yours</div>
+                        <div class="cloud-pill pos-t2">You make my world beautiful</div>
+                        <div class="cloud-pill pos-m1">You are my sunshine ❤️</div>
+                        <div class="cloud-pill pos-m2">Happy Birthday Sowjanya(KANMANI)</div>
+                        <div class="cloud-pill pos-b1">I'm lucky to have you</div>
+                        <div class="cloud-pill pos-b2">My favorite person 🧸</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sim-step" id="step-letter">
+            <div class="scroll-letter-envelope">
+                <p class="envelope-intro-title" id="letter-title-text">A Message From My Heart</p>
+                <div class="envelope-graphics-wrapper" id="envelope-wrapper">
+                    <div class="letter-flap-top"></div>
+                    <div class="envelope-pouch">
+                        <div class="sealed-heart">❤️</div>
+                    </div>
+                </div>
+                <p class="envelope-action-notice" id="envelope-status-label">Tap the envelope</p>
+
+                <div class="document-sheet-paper" id="paper-sheet">
+                    <div class="sheet-heading">
+                        <span class="salutation">Dear Sowjanya(KANMANI),</span>
+                        <span class="sheet-deco-icon">🧸</span>
+                    </div>
+                    <div class="sheet-scroller-body">
+                        <p class="typewriter-paragraph" id="target-typing-body"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sim-step" id="step-giftbox">
+            <div class="giftbox-endplate-view">
+                <div class="giftbox-idle-panel" id="gift-click-zone">
+                    <p class="gift-callout-title">One Last Thing...</p>
+                    <p class="gift-callout-sub">Tap the gift</p>
+                    <div class="giftbox-container-box">
+                        <div class="gift-lid"></div>
+                        <div class="gift-ribbon-v"></div>
+                        <div class="gift-ribbon-h"></div>
+                        <div class="gift-bow">🎀</div>
+                    </div>
+                </div>
+                <div class="giftbox-unveiled-panel" id="gift-unveiled-content">
+                    <div class="celebration-polaroid">
+                        <div class="polaroid-header">I love you</div>
+                        <img src="1000016157.jpg" alt="Together Forever" class="polaroid-image-media">
+                        <div class="polaroid-footer">
+                            <p class="footer-p1">Lots of love for you</p>
+                            <p class="footer-p2">Once again, Happy Birthday Sowjanya(KANMANI)!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
